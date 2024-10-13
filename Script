@@ -1,1 +1,61 @@
-gggg
+-- Daftar nama untuk diacak
+local names = {"Budi", "Andi", "Siti", "Rina", "Dika"}
+
+-- Daftar pekerjaan untuk diacak
+local jobs = {"Guru", "Dokter", "Insinyur", "Pengacara", "Programmer"}
+
+-- Fungsi untuk mengacak nama dari daftar dan menambahkan @gmail.com
+function getRandomEmail()
+    local index = math.random(1, #names)
+    return names[index] .. "@gmail.com"
+end
+
+-- Fungsi untuk mengacak nomor telepon yang dimulai dengan 08 dan terdiri dari 12 digit
+function getRandomPhoneNumber()
+    local number = "08"
+    for i = 1, 10 do
+        number = number .. math.random(0, 9)
+    end
+    return number
+end
+
+-- Fungsi untuk mengacak nomor KTP yang terdiri dari 16 digit
+function getRandomKTPNumber()
+    local ktpNumber = ""
+    for i = 1, 16 do
+        ktpNumber = ktpNumber .. math.random(0, 9)
+    end
+    return ktpNumber
+end
+
+-- Fungsi untuk mengacak tanggal lahir
+function getRandomBirthDate()
+    local day = math.random(1, 28)  -- Menghindari bulan dengan 30 atau 31 hari
+    local month = math.random(1, 12)
+    local year = math.random(1970, 2005) -- Rentang tahun kelahiran
+    return string.format("%02d-%02d-%04d", day, month, year)
+end
+
+-- Fungsi untuk mengacak pekerjaan dari daftar
+function getRandomJob()
+    local index = math.random(1, #jobs)
+    return jobs[index]
+end
+
+-- Set seed acak agar hasil acak bervariasi setiap kali dijalankan
+math.randomseed(os.time())
+
+-- Mengacak semua data
+local randomEmail = getRandomEmail()
+local randomPhoneNumber = getRandomPhoneNumber()
+local randomKTPNumber = getRandomKTPNumber()
+local randomBirthDate = getRandomBirthDate()
+local randomJob = getRandomJob()
+
+-- Menampilkan hasil acak
+print("Email Acak: " .. randomEmail)
+print("Nomor Telepon Acak: " .. randomPhoneNumber)
+print("Nomor KTP Acak: " .. randomKTPNumber)
+print("Tanggal Lahir Acak: " .. randomBirthDate)
+print("Pekerjaan Acak: " .. randomJob)
+
